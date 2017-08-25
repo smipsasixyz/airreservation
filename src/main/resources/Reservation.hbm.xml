@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.bsr.air.domain.Reservation" table="Reservation">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="rid" type="int">
+         <generator class="native"/>
+      </id>
+      <property name="confnbr" type="string"/>
+      <property name="not" column="nooftic" type="int"/>
+      <property name="fid"  type="int"/>
+      <property name="uid" column="upid"  type="int"/>
+      <property name="transid"  type="int"/>
+      </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.bsr.air.domain.Flight" table="flight">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="fid" type="int">
+         <generator class="native"/>
+      </id>
+      <property name="fnum" type="int"/>
+      <property name="origin" type="string"/>
+      <property name="destination" type="string"/>
+      <property name="dtime" type="time"/>
+      <property name="atime" type="time"/>
+      <property name="nseats" type="int"/>
+      <property name="price" type="double"/>
+      </class>
+</hibernate-mapping>

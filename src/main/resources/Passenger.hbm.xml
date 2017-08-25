@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.bsr.air.domain.Passenger" table="Passengers">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="pid" type="int" column="pid">
+         <generator class="native"/>
+      </id>
+      <property name="fname" column="pfname" type="string"/>
+      <property name="lname" column="plname" type="string"/>
+      <property name="dob" type="date"/>
+      <property name="email" type="string"/>
+      <property name="rid"  type="int"/>
+      </class>
+</hibernate-mapping>

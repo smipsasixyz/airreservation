@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.bsr.air.domain.User" table="UserProfile">
+      <meta attribute="class-description">
+         This class contains the employee detail. 
+      </meta>
+      <id name="uid" type="int" column="UPID">
+         <generator class="native"/>
+      </id>
+      <property name="fname"  type="string"/>
+      <property name="lname"  type="string"/>
+      <property name="username"  type="string"/>
+      <property name="email"  type="string"/></class>
+</hibernate-mapping>
