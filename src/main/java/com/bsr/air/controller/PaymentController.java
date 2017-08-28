@@ -1,6 +1,8 @@
 package com.bsr.air.controller;
 
 import java.security.MessageDigest;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
@@ -29,7 +31,7 @@ import com.bsr.air.domain.Flight;
 
 public class PaymentController {
 	private Client client;
-	   private static String REST_SERVICE_URL = "http://localhost:8080/creditcardservice/rest/CardService";
+	   private static String REST_SERVICE_URL = "http://localhost:9090/creditcardservice/rest/CardService";
 	   private static final String SUCCESS_RESULT="<response>SUCCESS</response>";
 	
 	@RequestMapping(value = "/processpayment", method = RequestMethod.POST)
@@ -38,12 +40,23 @@ public class PaymentController {
 		init();
 		String cnumber=req.getParameter("creditnumber");
 		String cvv=req.getParameter("cvv");
+	      String regex = "[0-9]{16}";
+	    	 
+		    	Pattern pattern = Pattern.compile(regex);
+		    	 
+		    	cnumber = cnumber.replaceAll("-", "");
+		    	 
+		    	    //Match the card
+		    	    Matcher matcher = pattern.matcher(cnumber);
+		    	 
+		if(matcher.matches()) {
 		Form form = new Form();
 	      form.param("cnumber", ""+getSHA256Hash(cnumber));
 	      form.param("cvv", ""+getSHA256Hash(cvv));
 	      form.param("amount", ""+ BI.getAmount());
+	      try {
 	      String callResult = client.target(REST_SERVICE_URL).path("/modify").request(MediaType.APPLICATION_XML).put(Entity.entity(form,MediaType.APPLICATION_FORM_URLENCODED_TYPE),String.class);
-		if(SUCCESS_RESULT.equals(callResult)){
+	      if(SUCCESS_RESULT.equals(callResult)){
 			mv.setViewName("conform");     
 			Flight  f=ManageFlights.getFlight(BI.getFlightid());
 			String confnbr=ManageBookingInfo.manageBook(f, BI.getPassengers(),BI.getNooftickets(),BI.getUid(),BI.getAmount());
@@ -55,10 +68,18 @@ public class PaymentController {
 			System.err.println("EndSession  : " + BI.toString());
 			status.setComplete();
 		}
-		else {
+	    } 
+		catch(Exception ex){
 			mv.setViewName("payment");
+			mv.addObject("amount",BI.getAmount());			
 			mv.addObject("sorry", "Sorry!!! Problem with your card");
 		}
+	}
+		else {
+			mv.setViewName("payment");
+			mv.addObject("amount",BI.getAmount());
+			mv.addObject("sorry", "Sorry!!! Please check digits in your card");
+		}	
 		return mv;
 	}
 	

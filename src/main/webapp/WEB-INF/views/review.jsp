@@ -14,7 +14,7 @@
 <body>
 <h2>Review Flight Ticket</h2>
 		<br>
-		<form  action="http://localhost:8080/airreservation/book/userpayment.do"  method="post">
+		<form  action="http://localhost:9090/airreservation/book/userpayment.do"  method="post">
 		<h3>Flight Number</h3>${flight.fnum}
 		<h3>Flight Origin</h3>${flight.origin}
 		<h3>Flight Destination</h3>${flight.destination}

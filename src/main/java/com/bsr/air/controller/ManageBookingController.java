@@ -39,6 +39,7 @@ public class ManageBookingController {
 		ModelAndView mv = new ModelAndView();
 		Reservation reserve = ManageReservation.getReservation(confnbr);
 		Flight flight = ManageFlights.getFlight(reserve.getFid());
+		int not=reserve.getNot();
 		List<Passenger> listPassengers = ManagePassenger.getPassengers(reserve.getRid());
 		User user = ManageUser.getUserByID(reserve.getUid());
 		TransactionUser tu = ManageTransactionUser.getTransactionUserByID(reserve.getTransid());
@@ -47,6 +48,7 @@ public class ManageBookingController {
 		mv.addObject("list", listPassengers);
 		mv.addObject("user", user);
 		mv.addObject("flight", flight);
+		mv.addObject("nooftickets", not);
 		mv.setViewName("reviewreservation");
 		return mv;
 	}

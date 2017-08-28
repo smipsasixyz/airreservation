@@ -32,14 +32,14 @@
 	<a class="brand" href="/airreservation/index.jsp"><H3>AIR LINES  TRAVEL</H3></a>
     </div>
 	<div style="float:right; width:40%; margin-left:10px;">
-    <a href="http://localhost:8080/airreservation/managebook/viewReservation.do"><H3>View Reservation</H3></a>
+    <a href="http://localhost:9090/airreservation/managebook/viewReservation.do"><H3>View Reservation</H3></a>
    </div>	
 <br/>
 <br/>
 <br/>
 <br/>
 
-<form  action="http://localhost:8080/airreservation/search/results.do" id="searchForm" method="post">
+<form  action="http://localhost:9090/airreservation/search/results.do" id="searchForm" method="post">
 		<h4>Book Tickets<h4>						
 							
 

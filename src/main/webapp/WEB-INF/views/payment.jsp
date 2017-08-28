@@ -11,7 +11,7 @@
 <body>
 <h2>Make a Payment </h2>
 ${sorry}
-   <form action="http://localhost:8080/airreservation/payment/processpayment.do"  method="post" >
+   <form action="http://localhost:9090/airreservation/payment/processpayment.do"  method="post" >
 				<p>
 				Credit Card Number:
 				<input type="text" name="creditnumber" id="creditnumber" required="required" />
